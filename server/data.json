@@ -1,0 +1,17 @@
+{"label":"Algèbre linéaire","degree":"L1 Informatique","semester":1,"volume":{"CM":0,"TD":50,"TP":0},"_id":"IPNMzgSBXaDx3Liy"}
+{"label":"Outils de Calculs, Probabilités, Statistique 1","degree":"L1 Informatique","semester":1,"volume":{"CM":15,"TD":35,"TP":0},"_id":"PdrQOh0rQSTCFMuo"}
+{"label":"Introduction à la programmation","degree":"L1 Informatique","semester":1,"volume":{"CM":10,"TD":0,"TP":40},"_id":"BzMtYpqiaDcjKlfV"}
+{"label":"Culture numérique","degree":"L1 Informatique","semester":1,"parent":"Méthodologie informatique et projet professionnel","volume":{"CM":10,"TD":0,"TP":15},"_id":"sCWQ1Be2VGmUnJTv"}
+{"label":"Méthodologie","degree":"L1 Informatique","semester":1,"parent":"Méthodologie informatique et projet professionnel","volume":{"CM":0,"TD":12,"TP":0},"_id":"G0QqrRdL0dk48k6f"}
+{"label":"Expression – Communication","degree":"L1 Informatique","semester":1,"parent":"Méthodologie informatique et projet professionnel","volume":{"CM":0,"TD":0,"TP":13},"_id":"C8R7BbBFUv3S74xm"}
+{"label":"Environnement informatique","degree":"L1 Informatique","semester":1,"parent":"Informatique et Internet","volume":{"CM":4,"TD":0,"TP":16},"_id":"19HsKMlzstTmb72G"}
+{"label":"Technologies web","degree":"L1 Informatique","semester":1,"parent":"Informatique et Internet","volume":{"CM":6,"TD":0,"TP":24},"_id":"jVNv1e1nyP6MTalL"}
+{"label":"Algèbre linéaire","degree":"L1 Informatique","semester":2,"volume":{"CM":0,"TD":50,"TP":0},"_id":"kU782ApqFGyrrVYs"}
+{"parent":"Logique","label":"Logique et raisonnement","degree":"L1 Informatique","semester":2,"volume":{"CM":0,"TD":25,"TP":0},"_id":"XXNt4XoVScGR0A1R"}
+{"parent":"Logique","label":"Calcul scientifique","degree":"L1 Informatique","semester":2,"volume":{"CM":12.5,"TD":0,"TP":12.5},"_id":"xycI7otRH3fH2uEu"}
+{"parent":"Technologies informatiques","label":"Technologies web","degree":"L1 Informatique","semester":2,"volume":{"CM":5,"TD":0,"TP":20},"_id":"rMWH5hYASqtBVduq"}
+{"parent":"Technologies informatiques","label":"Architecture des systèmes","degree":"L1 Informatique","semester":2,"volume":{"CM":9,"TD":15,"TP":0},"_id":"IvMRkItPIj5y5K36"}
+{"label":"Conception de logiciels","degree":"L1 Informatique","semester":2,"volume":{"CM":10,"TD":0,"TP":40},"_id":"U35TZFAwRHEQpLhM"}
+{"parent":"Humanités","label":"Anglais général","degree":"L1 Informatique","semester":2,"volume":{"CM":0,"TD":25,"TP":0},"_id":"4q8MuaA6e1UU10uK"}
+{"parent":"Humanités","label":"Anglais approfondi","degree":"L1 Informatique","semester":2,"volume":{"CM":0,"TD":12.5,"TP":0},"_id":"4xiNvKaJMvB1LeWN"}
+{"parent":"Humanités","label":"Expression - Communication ","degree":"L1 Informatique","semester":2,"volume":{"CM":0,"TD":0,"TP":12.5},"_id":"SPKheQIVxya0hKqr"}

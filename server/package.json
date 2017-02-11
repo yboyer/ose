@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "^4.14.1",
+    "nedb": "^1.8.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {},
+    "rules": {
+      "space-before-function-paren": [
+        "error",
+        "never"
+      ]
+    },
+    "extends": [
+      "xo-space/esnext"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "eslint-config-xo-space": "^0.15.0"
+  }
+}

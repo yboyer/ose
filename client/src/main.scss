@@ -1,0 +1,50 @@
+@import "assets/reset";
+@import "assets/fonts";
+@import "assets/common";
+@import "../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css";
+
+
+html {
+  height: 100%;
+}
+
+body {
+  cursor: default;
+  user-select:none;
+  margin: 0;
+  background-color: $white-darker-color;
+  color: $text-color;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+  font-size: 14px;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  flex: 1;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+app-root {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  max-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,11 @@
+[ignore]
+.*/node_modules/config-chain/test/.*
+.*/node_modules/vue-resource/test/data/.*
+.*/node_modules/vue-router/src/.*
+.*/node_modules/vue/src/.*
+
+[options]
+unsafe.enable_getters_and_setters=true
+module.file_ext=.vue
+module.file_ext=.js
+module.file_ext=.json
