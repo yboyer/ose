@@ -1,11 +1,8 @@
 <template>
-  <div class="selector" @mousedown.stop :class="[color]":style="{top: (position.top+10)+'px', left: (position.left - 80/2)+'px'}">
+  <div class="selector" @mousedown.stop :class="[color]" :style="{top: (position.top+10)+'px', left: '35px'}">
+    <span :style="{left: ((position.left-10) - 18/2) + 'px'}"></span>
     <div class="container">
-      <div
-        class="item"
-        v-for="index in volume.global+1"
-        :class="{selected: index-1 === volume.user}"
-        @click.stop="click(index-1)">{{ index-1 }}h</div>
+      <input type="range" v-model="volume.user" @input="click($event)" min="0" :max="volume.global" step=".5">
     </div>
   </div>
 </template>
@@ -15,40 +12,28 @@
     name: 'Selector',
     props: ['volume', 'position', 'color'],
     methods: {
-      click(index: number) {
-        this.$emit('select', index);
-      }
-    },
-
-    watch: {
-      volume() {
-        this.$el.childNodes[0].scrollTop = 0;
+      click({target}: Event) {
+        this.$emit('select', Number(target.value));
       }
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../../assets/common.scss";
+  @import "range.scss";
+  @import "svg-arrow.scss";
 
   .selector {
     $nbItem: 11.5;
     position: absolute;
-    width: 80px;
-    z-index: 1;
+    width: 200px;
+    z-index: 2;
 
-    &:before {
-      $size: 10px;
-      content: '';
-      display: block;
-      width: 0;
-      height: 0;
+    span {
       position: absolute;
       left: 0;
-      border-left: $size solid transparent;
-      border-right: $size solid transparent;
-      border-bottom: $size solid;
-      top: -$size;
+      top: -6px;
       left: 50%;
       transform: translateX(calc(-50%));
     }
@@ -56,55 +41,28 @@
     .container {
       border-radius: 4px;
       font-size: .9em;
-      overflow: auto;
-      max-height: calc(2.3em * #{$nbItem});
-    }
-
-    .item {
-      height: 2.3em;
-      color: $white-color;
+      height: 30px;
+      padding: 0 16px;
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: pointer;
-      transition: background-color .1s;
-
-      &:hover {
-        transition-duration: 0s;
-      }
-      &:active {
-        transition-duration: 0s;
-      }
+      overflow: auto;
+      max-height: calc(2.3em * #{$nbItem});
     }
   }
 
   @mixin mix-item($color) {
     $selected: lighten($color, 7.5%);
 
-    &:before {
-      border-bottom-color: $color;
+    @include range($color);
+
+    span {
+      @include svg-arrow($text-color);
     }
 
     .container {
       box-shadow: 0 0 0 1px rgba(#000, .1), 0 10px 25px 0 transparentize($color, .6);
-      background: $color;
-    }
-
-    .item {
-      &:not(:last-child) {
-        border-bottom: 1px solid $selected;
-      }
-
-      &.selected {
-        background-color: $selected;
-      }
-
-      &:hover {
-        background-color: lighten($color, 5%);
-      }
-      &:active {
-        background-color: darken($color, 5%);
-      }
+      background: $white-color;
     }
   }
 
