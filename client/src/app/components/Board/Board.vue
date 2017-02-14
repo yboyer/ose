@@ -18,9 +18,9 @@
         </div>
       </div>
       <div class="foot">
-        <div class="square" v-for="key in ['CM', 'TD', 'TP']" :title="key">{{ sum(key) }}h</div>
+        <div class="square" v-for="key in ['CM', 'TD', 'TP']" :title="key">{{ comma(sum(key)) }}h</div>
         <div class="label"></div>
-        <div class="square" title="Total">{{ sum() }}h</div>
+        <div class="square" title="Total">{{ comma(sum()) }}h</div>
       </div>
     </div>
   </div>
@@ -43,6 +43,10 @@
     },
 
     methods: {
+      comma(value: number) {
+        return value.toFixed(1);
+      },
+
       closeSelector() {
         Store.eventHub.$emit('closeSelector');
       },
@@ -100,7 +104,7 @@
   .head, .foot {
     display: flex;
     font-weight: 600;
-    padding: 1em 0;
+    padding: 1em 25px;
 
     & > div {
       box-shadow: 1px 0 transparentize($text-color, .75);
@@ -155,6 +159,7 @@
       &.semester {
         margin-top: .8em;
         margin-bottom: .4em;
+        margin-left: 8px;
         color: transparentize($text-color, 0.5);
       }
     }

@@ -1,14 +1,14 @@
 <template>
   <div class="item" :class="data.color || 'indigo'">
     <div v-for="key in ['CM', 'TD', 'TP']" :title="key">
-      <div class="square" v-if="data.volume[key] !== 0" @mousedown.stop="toggleSelector($event, key)">{{ data.userVolume[key] }}/{{ data.volume[key] }}h</div>
-      <div class="square" v-if="data.volume[key] === 0">{{ data.volume[key] }}h</div>
+      <div class="square" :class="[state(key)]" v-if="data.volume[key] !== 0" @mousedown.stop="toggleSelector($event, key)">{{ comma(data.userVolume[key]) }}/{{ data.volume[key] }}h</div>
+      <div class="square" :class="[state(key)]" v-else>{{ data.volume[key] }}h</div>
     </div>
     <div class="label" :title="data.label">
       <div class="id">{{ data.label }}</div>
       <div class="subtitle" v-if="data.parent">{{ data.parent }}</div>
     </div>
-    <div class="square" title="Total">{{ volume }}h</div>
+    <div class="square" title="Total">{{ comma(volume) }}h</div>
     <div class="remove" @click="remove()">&#x2717;</div>
 
     <selector
@@ -37,7 +37,7 @@
   .item {
     display: flex;
     align-items: center;
-    margin: 1px 0;
+    margin: 1px 25px;
     transition-property: color, background-color, box-shadow;
     transition-duration: .2s;
     border-radius: 3px;
@@ -63,11 +63,26 @@
     overflow: hidden;
     transition: all .2s ease;
     margin-right: 1px;
+
+    &.focus {
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 25px #FFF;
+
+    }
+
+    &.unfocus {
+      opacity: .4;
+
+      &:hover {
+        opacity: .6;
+      }
+    }
   }
 
   .label {
     flex-grow: 1;
-    margin-left: 11px;
+    margin: 0 11px;
     font-weight: 600;
     overflow: hidden;
   }

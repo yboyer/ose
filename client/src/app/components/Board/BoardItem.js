@@ -40,21 +40,32 @@ export default {
   },
 
   methods: {
+    comma(value: number): string {
+      return value.toFixed(1);
+    },
+
+    state(key: string): string {
+      if (this.selector.currentKey !== '') {
+        return this.selector.currentKey === key ? 'focus' : 'unfocus';
+      }
+      return '';
+    },
+
     onSelect(value: number) {
       this.data.userVolume[this.selector.currentKey] = value;
       Store.updateItem(this.data._id);
-      this.closeSelector();
     },
 
     closeSelector() {
       this.selector.visible = false;
       this.selector.position.top = 0;
       this.selector.position.left = 0;
+      this.selector.currentKey = '';
     },
 
     toggleSelector({currentTarget}: MouseEvent, key: string) {
       const top = currentTarget.offsetTop + currentTarget.offsetHeight;
-      const left = currentTarget.offsetLeft + currentTarget.offsetWidth / 2;
+      const left = currentTarget.offsetLeft + currentTarget.offsetWidth / 4;
 
       if (top === this.selector.position.top && left === this.selector.position.left) {
         this.closeSelector();

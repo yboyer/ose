@@ -1,0 +1,75 @@
+@mixin range($color) {
+  // Range Slider
+  $range-width: 100%;
+
+  $range-handle-color: $color;
+  $range-handle-color-hover: darken($range-handle-color, 20%);
+  $range-handle-size: 15px;
+
+  $range-track-color: $color;
+  $range-track-height: 2px;
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: $range-width;
+    height: $range-track-height;
+    border-radius: 5px;
+    background-color: $range-track-color;
+    outline: none;
+    padding: 0;
+    margin: 0;
+
+    // Range Handle
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: $range-handle-size;
+      height: $range-handle-size;
+      border-radius: 50%;
+      background-color: $range-handle-color;
+      border: 1px solid #FFF;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out;
+
+      &:hover {
+        transition-duration: 0s;
+        background-color: $range-handle-color-hover;
+      }
+    }
+
+    &:active::-webkit-slider-thumb {
+      transition-duration: 0s;
+      background-color: $range-handle-color-hover;
+    }
+
+    &::-moz-range-thumb {
+      width: $range-handle-size;
+      height: $range-handle-size;
+      border: 0;
+      border-radius: 50%;
+      background-color: $range-handle-color;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out;
+
+      &:hover {
+        transition-duration: 0s;
+        background-color: $range-handle-color-hover;
+      }
+    }
+
+    &:active::-moz-range-thumb {
+      transition-duration: 0s;
+      background-color: $range-handle-color-hover;
+    }
+  }
+
+  // Firefox Overrides
+  ::-moz-range-track {
+    background-color: $range-track-color;
+    border: 0;
+  }
+
+  input::-moz-focus-inner,
+  input::-moz-focus-outer {
+    border: 0;
+  }
+}
