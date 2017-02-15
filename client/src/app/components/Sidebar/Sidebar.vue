@@ -36,7 +36,7 @@
     },
 
     methods: {
-      filterItems(items) {
+      filterItems(items): Array<Object> {
         return items.filter(item => {
           const filter = this.itemFilter.toLowerCase();
 
@@ -48,7 +48,7 @@
     },
 
     computed: {
-      degrees() {
+      degrees(): Object {
         return Store.toDegrees(this.teachingUnits)
       }
     }

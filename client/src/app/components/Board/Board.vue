@@ -16,6 +16,9 @@
             <item v-for="tu in semester.teachingUnits" :data="tu" :key="tu._id" />
           </div>
         </div>
+        <div class="degree" v-if="Object.keys(degrees).length === 0">
+          <div class="placeholder">Aucune unité d'enseignement à afficher...</div>
+        </div>
       </div>
       <div class="foot">
         <div class="square" v-for="key in ['CM', 'TD', 'TP']" :title="key">{{ comma(sum(key)) }}h</div>
@@ -105,23 +108,25 @@
     display: flex;
     font-weight: 600;
     padding: 1em 25px;
+    flex-shrink: 0;
 
     & > div {
       box-shadow: 1px 0 transparentize($text-color, .75);
     }
 
     .square {
-      width: 61px;
+      width: 60px;
       text-align: center;
+      margin-right: 1px;
 
       &:last-child {
-        margin-right: 32px;
+        margin-right: 33px;
       }
     }
 
     .label {
       flex-grow: 1;
-      margin-left: 11px;
+      padding: 0 11px;
     }
   }
 
@@ -136,14 +141,20 @@
   }
 
   .main {
-    padding-top: 1.5em;
     padding-bottom: 2em;
     overflow-y: scroll;
     flex: 1;
   }
 
+  .placeholder {
+    padding-left: 25px;
+    font-size: 1em;
+    font-style: italic;
+    color: rgba($text-color, .7);
+  }
 
-  .degree {
+  div.degree {
+    margin-top: 1.5em;
     position: relative;
 
     label {

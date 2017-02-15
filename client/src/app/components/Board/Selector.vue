@@ -21,8 +21,8 @@
 
 <style lang="scss" scoped>
   @import "../../../assets/common.scss";
-  @import "range.scss";
-  @import "svg-arrow.scss";
+  @import "../../../assets/range.scss";
+  @import "../../../assets/svg-arrow.scss";
 
   .selector {
     $nbItem: 11.5;

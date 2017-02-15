@@ -85,6 +85,9 @@
       transition: all .2s ease;
       margin-right: 1px;
 
+      &:not(.hidden) {
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+      }
       &.hidden {
         width: 0;
       }

@@ -51,12 +51,27 @@ const data = {
 
     teachingUnits
       .sort((a, b) => {
-        if (a.label < b.label) {
+        if (a.degree.toLowerCase() < b.degree.toLowerCase()) {
           return -1;
         }
-        if (a.label > b.label) {
+        if (a.degree.toLowerCase() > b.degree.toLowerCase()) {
           return 1;
         }
+
+        if (a.semester < b.semester) {
+          return -1;
+        }
+        if (a.semester > b.semester) {
+          return 1;
+        }
+
+        if (a.label.toLowerCase() < b.label.toLowerCase()) {
+          return -1;
+        }
+        if (a.label.toLowerCase() > b.label.toLowerCase()) {
+          return 1;
+        }
+
         return 0;
       })
       .forEach(tu => {
