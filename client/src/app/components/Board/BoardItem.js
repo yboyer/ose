@@ -19,7 +19,7 @@ export default {
         color: '',
         volume: {
           user: 0,
-          global: 30
+          global: 0
         },
         position: {
           top: 0,
@@ -53,7 +53,6 @@ export default {
 
     onSelect(value: number) {
       this.data.userVolume[this.selector.currentKey] = value;
-      Store.updateItem(this.data._id);
     },
 
     closeSelector() {
@@ -61,9 +60,10 @@ export default {
       this.selector.position.top = 0;
       this.selector.position.left = 0;
       this.selector.currentKey = '';
+      Store.updateItem(this.data._id);
     },
 
-    toggleSelector({currentTarget}: MouseEvent, key: string) {
+    toggleSelector({currentTarget}: {currentTarget: HTMLElement}, key: string) {
       const top = currentTarget.offsetTop + currentTarget.offsetHeight;
       const left = currentTarget.offsetLeft + currentTarget.offsetWidth / 4;
 
@@ -92,7 +92,9 @@ export default {
     },
 
     dragnewcompont(e: DragEvent) {
-      e.dataTransfer.setData('id', this.data._id);
+      if (e.dataTransfer) {
+        e.dataTransfer.setData('id', this.data._id);
+      }
     }
   },
 

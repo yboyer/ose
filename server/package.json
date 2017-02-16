@@ -1,7 +1,6 @@
 {
-  "dependencies": {
-    "express": "^4.14.1",
-    "nedb": "^1.8.0"
+  "scripts": {
+    "debug": "nodemon -e js index.js"
   },
   "eslintConfig": {
     "root": true,
@@ -16,8 +15,13 @@
       "xo-space/esnext"
     ]
   },
+  "dependencies": {
+    "express": "^4.14.1",
+    "nedb": "^1.8.0"
+  },
   "devDependencies": {
     "eslint": "^3.15.0",
-    "eslint-config-xo-space": "^0.15.0"
+    "eslint-config-xo-space": "^0.15.0",
+    "nodemon": "^1.11.0"
   }
 }

@@ -2,7 +2,7 @@
   <div class="selector" @mousedown.stop :class="[color]" :style="{top: (position.top+10)+'px', left: '35px'}">
     <span :style="{left: ((position.left-10) - 18/2) + 'px'}"></span>
     <div class="container">
-      <input type="range" v-model="volume.user" @input="click($event)" min="0" :max="volume.global" step=".5">
+      <input type="range" v-model="volume.user" @input="change($event)" min="0" :max="volume.global" step=".5">
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
     name: 'Selector',
     props: ['volume', 'position', 'color'],
     methods: {
-      click({target}: Event) {
+      change({target}: Event) {
         this.$emit('select', Number(target.value));
       }
     }
