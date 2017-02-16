@@ -38,12 +38,12 @@ class GlobalStore {
 
   updateItem(id: string): void {
     const tu = this.teachingUnits.user.findIndex(item => item._id === id);
-    let remove = true;
+    let needsRemove = true;
     ['CM', 'TD', 'TP'].forEach(key => {
-      remove = remove && this.teachingUnits.user[tu].userVolume[key] === 0;
+      needsRemove = needsRemove && this.teachingUnits.user[tu].userVolume[key] === 0;
     });
 
-    if (remove) {
+    if (needsRemove) {
       this.teachingUnits.user.splice(tu, 1);
     }
   }

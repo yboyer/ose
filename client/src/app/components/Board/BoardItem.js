@@ -30,13 +30,13 @@ export default {
   },
 
   created() {
-    Store.eventHub.$on('closeSelector', () => {
-      this.closeSelector();
-    });
+    Store.eventHub.$on('closeSelector', this.onCloseSelector);
+    window.addEventListener('mousedown', this.closeSelector);
+  },
 
-    window.addEventListener('mousedown', () => {
-      Store.eventHub.$emit('closeSelector');
-    });
+  destroyed() {
+    Store.eventHub.$off('closeSelector', this.onCloseSelector);
+    window.removeEventListener('mousedown', this.closeSelector);
   },
 
   methods: {
@@ -56,6 +56,10 @@ export default {
     },
 
     closeSelector() {
+      Store.eventHub.$emit('closeSelector');
+    },
+
+    onCloseSelector() {
       this.selector.visible = false;
       this.selector.position.top = 0;
       this.selector.position.left = 0;
@@ -68,7 +72,7 @@ export default {
       const left = currentTarget.offsetLeft + currentTarget.offsetWidth / 4;
 
       if (top === this.selector.position.top && left === this.selector.position.left) {
-        this.closeSelector();
+        this.onCloseSelector();
       } else {
         Store.eventHub.$emit('closeSelector');
         this.selector.visible = true;
