@@ -11,12 +11,18 @@
 </template>
 
 <script>
+  import Store from '../store/GlobalStore';
+
   export default {
     name: 'Header',
     data() {
       return {
-        username: 'Gaétan Richard'
-      }
+        username: ''
+      };
+    },
+
+    created() {
+      this.username = `${Store.userData.firstName} ${Store.userData.lastName}`;
     },
 
     computed: {

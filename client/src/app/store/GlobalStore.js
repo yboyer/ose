@@ -4,11 +4,13 @@ import Colors from '../Colors.js';
 import type {Volume, TeachingUnit, Degrees} from '../../../../types/teachingUnits.js';
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import '../../tools.js';
 Vue.use(VueResource);
 
 const url = 'http://localhost:3300/teachingunits';
 
 class GlobalStore {
+  _userData: {firstName: string, lastName: string}
   teachingUnits: {user: Array<TeachingUnit>, available: Array<TeachingUnit>} = {
     user: [],
     available: []
@@ -27,6 +29,12 @@ class GlobalStore {
         .filter(tu => this.sumVolume(tu.userVolume) !== 0)
         .forEach(tu => this.teachingUnits.user.push(tu));
     });
+
+    const cookieData = JSON.parse(atob(document.getCookie('OSE')));
+    this._userData = {
+      firstName: decodeURIComponent(cookieData.firstName),
+      lastName: decodeURIComponent(cookieData.lastName)
+    };
   }
 
   /**
@@ -38,6 +46,10 @@ class GlobalStore {
     return volume.CM +
       volume.TD +
       volume.TP;
+  }
+
+  get userData(): {firstName: string, lastName: string} {
+    return this._userData;
   }
 
   /**
