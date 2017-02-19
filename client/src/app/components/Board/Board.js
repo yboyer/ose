@@ -1,6 +1,7 @@
 // @flow
 
 import Store from '../../store/GlobalStore';
+import type {Degrees, TeachingUnit} from '../../../../../types/teachingUnits.js';
 import Item from './BoardItem.vue';
 
 export default {
@@ -34,19 +35,20 @@ export default {
 
     sum(key?: string): number {
       if (key) {
-        return this.teachingUnits.reduce((sum, tu) => {
-          return sum + tu.userVolume[key];
+        const categ = key;
+        return this.teachingUnits.reduce((sum: number, tu: TeachingUnit) => {
+          return sum + tu.userVolume[categ];
         }, 0);
       }
 
-      return this.teachingUnits.reduce((sum, tu) => {
+      return this.teachingUnits.reduce((sum: number, tu: TeachingUnit) => {
         return sum + tu.userVolume.CM + tu.userVolume.TD + tu.userVolume.TP;
       }, 0);
     }
   },
 
   computed: {
-    degrees(): Object {
+    degrees(): Degrees {
       return Store.toDegrees(this.teachingUnits);
     }
   }

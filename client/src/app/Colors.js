@@ -1,13 +1,9 @@
 // @flow
 
-export default {
-  index: -1,
+export default class Colors {
+  static index = -1;
 
-  next(): string {
-    return this.colors[++this.index % this.colors.length];
-  },
-
-  colors: [
+  static colors = [
     'red',
     'pink',
     'grape',
@@ -21,4 +17,12 @@ export default {
     'yellow',
     'orange'
   ]
-};
+
+  /**
+   * Get the next color
+   * @return {string} The next color
+   */
+  static next(): string {
+    return Colors.colors[++Colors.index % Colors.colors.length];
+  }
+}

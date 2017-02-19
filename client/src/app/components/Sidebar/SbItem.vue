@@ -14,14 +14,16 @@
 <script>
   export default {
     name: 'sb-item',
-    props: ['data', 'color'],
+    props: ['data'],
 
     methods: {
       diff(key: string): number {
-        return this.data.volume[key] - this.data.userVolume[key]
+        return this.data.volume[key] - this.data.userVolume[key];
       },
-      dragnewcompont(e) {
-        e.dataTransfer.setData('id', this.data._id);
+      dragnewcompont(e: DragEvent) {
+        if (e.dataTransfer) {
+          e.dataTransfer.setData('id', this.data._id);
+        }
       }
     },
 

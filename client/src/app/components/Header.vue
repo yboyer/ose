@@ -20,7 +20,7 @@
     },
 
     computed: {
-      initials() {
+      initials(): string {
         const initials = this.username.split(' ')
           .map(name =>
             name.split('-').map(word => word[0]).join('')
@@ -28,7 +28,7 @@
         return initials.join('');
       },
 
-      bgc() {
+      bgc(): string {
         const hue = (this.username.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0) % 36)*10;
         return `hsl(${hue}, 62%, 57%)`;
       }

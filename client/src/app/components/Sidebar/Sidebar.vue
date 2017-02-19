@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="search">
         <input type="text" v-model="itemFilter" placeholder="Filter la selection..." />
-        <div class="clear" @click="itemFilter = ''">&#x2715;</div>
+        <div class="clear" v-show="itemFilter !== ''" @click="itemFilter = ''">&#x2715;</div>
       </div>
       <div class="degrees" v-for="degree in degrees">
         <label class="degree">{{ degree.name }}</label>
@@ -20,6 +20,7 @@
   import Item from './SbItem.vue';
   import Draggable from 'vuedraggable';
   import Store from '../../store/GlobalStore';
+  import type {Degrees, TeachingUnit} from '../../../../../types/teachingUnits.js';
 
   export default {
     name: 'Sidebar',
@@ -36,19 +37,20 @@
     },
 
     methods: {
-      filterItems(items): Array<Object> {
+      filterItems(items: Array<TeachingUnit>): Array<TeachingUnit> {
         return items.filter(item => {
           const filter = this.itemFilter.toLowerCase();
+          const fields = [item.label]; // The fields to filter
 
-          return [item.label].some(item => {
-            return item.toLowerCase().includes(filter)
+          return fields.some(field => {
+            return field.toLowerCase().includes(filter)
           })
         });
       }
     },
 
     computed: {
-      degrees(): Object {
+      degrees(): Degrees {
         return Store.toDegrees(this.teachingUnits)
       }
     }

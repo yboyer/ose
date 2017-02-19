@@ -4,8 +4,8 @@ import Selector from './Selector.vue';
 import Store from '../../store/GlobalStore';
 
 export default {
-  name: 'sb-item',
-  props: ['data', 'color'],
+  name: 'board-item',
+  props: ['data'],
 
   components: {
     Selector
@@ -13,6 +13,7 @@ export default {
 
   data() {
     return {
+      needsUpdate: false,
       selector: {
         visible: false,
         currentKey: '',
@@ -53,6 +54,7 @@ export default {
 
     onSelect(value: number) {
       this.data.userVolume[this.selector.currentKey] = value;
+      this.needsUpdate = true;
     },
 
     closeSelector() {
@@ -64,7 +66,10 @@ export default {
       this.selector.position.top = 0;
       this.selector.position.left = 0;
       this.selector.currentKey = '';
-      Store.updateItem(this.data._id);
+      if (this.needsUpdate) {
+        Store.updateItem(this.data._id);
+        this.needsUpdate = false;
+      }
     },
 
     toggleSelector({currentTarget}: {currentTarget: HTMLElement}, key: string) {
