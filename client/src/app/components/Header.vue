@@ -61,7 +61,7 @@
     font-size: 1.8em;
     color: $main-color;
     font-style: italic;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.025em;
   }
 
   .user {

@@ -8,6 +8,7 @@
       <div class="id">{{ data.label }}</div>
       <div class="subtitle" v-if="data.parent">{{ data.parent }}</div>
     </div>
+    <div class="users" v-if="data.users.length !== 0">{{ data.users.length }}<div class="info" v-html="tooltip"></div></div>
     <div class="square" title="Total">{{ comma(volume) }}h</div>
     <div class="remove" @click="remove()">&#x2717;</div>
 
@@ -68,7 +69,6 @@
       position: relative;
       z-index: 1;
       box-shadow: 0 0 25px #FFF;
-
     }
 
     &.unfocus {
@@ -102,6 +102,65 @@
     @extend .wrap;
     font-size: .8em;
     font-weight: 400;
+  }
+
+  .users {
+    position: relative;
+    $size: 16px;
+    background-color: $text-color;
+    color: #FFF;
+    height: $size;
+    width: $size;
+    font-size: .8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    margin-right: 10px;
+
+    &:hover {
+      .info {
+        transform: translateX(-50%);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  .info {
+    position: absolute;
+    width: 190px;
+    background: $text-color;
+    transform: translate(-50%, 5px);
+    padding: .5em 1em;
+    left: 50%;
+    bottom: 100%;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .18s ease-out .18s;
+    box-shadow: 0 10px 25px 0 transparentize($text-color, .6);
+
+    .user {
+      margin-bottom: 0.1em;
+    }
+
+
+    &:after {
+      background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Cpath fill='#{$text-color}' d='M2.658 0h32.004c-6 0-11.627 12.002-16.002 12.002C14.285 12.002 8.594 0 2.658 0z'/%3E%3C/svg%3E") no-repeat;
+      background-size: 100% auto;
+      height: 6px;
+      width: 18px;
+      content: '';
+      display: block;
+      bottom: 100%;
+      left: 50%;
+      top: 100%;
+      position: absolute;
+      z-index: 10;
+      transform: translate(-50%);
+    }
   }
 
   .remove {

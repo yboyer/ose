@@ -48,7 +48,7 @@
     padding: 1em 2em;
     margin: 0 auto;
     width: 95%;
-    // max-width: 900px;
+    max-width: 820px;
     min-height: 100%;
     max-height: 100%;
     border-radius: 3px;

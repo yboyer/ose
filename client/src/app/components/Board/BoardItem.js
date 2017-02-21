@@ -1,6 +1,7 @@
 // @flow
 
 import Selector from './Selector.vue';
+import type {Volume} from '../../../../../types/teachingUnits.js';
 import Store from '../../store/GlobalStore';
 
 export default {
@@ -108,6 +109,19 @@ export default {
   },
 
   computed: {
+    tooltip(): string {
+      const users: Array<{firstName: string, lastName: string, volume: Volume}> = this.data.users;
+
+      return users.map(user => {
+        return `
+          <div>
+            <div class="user" style="margin-bottom:.2em;font-size:1.1em;text-decoration:underline">${user.firstName} ${user.lastName}</div>
+            <div class="volume" style="margin-left:.4em">CM: ${user.volume.CM}h, TD: ${user.volume.TD}h, TP: ${user.volume.TP}h</div>
+          </div>
+        `;
+      }).join('');
+    },
+
     volume(): number {
       return this.data.userVolume.CM +
         this.data.userVolume.TD +
