@@ -18,15 +18,13 @@
 
 <script>
   import Item from './SbItem.vue';
-  import Draggable from 'vuedraggable';
   import Store from '../../store/GlobalStore';
   import type {Degrees, TeachingUnit} from '../../../../../types/teachingUnits.js';
 
   export default {
     name: 'Sidebar',
     components: {
-      Item,
-      Draggable
+      Item
     },
 
     data() {
